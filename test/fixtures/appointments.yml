@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  time: 2020-08-19 23:20:13
+  user: one
+  laboratory: one
+
+two:
+  type: 
+  time: 2020-08-19 23:20:13
+  user: two
+  laboratory: two
