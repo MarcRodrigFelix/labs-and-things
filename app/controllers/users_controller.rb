@@ -2,12 +2,10 @@ class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
 
   def new
-    redirect_to user_path(@user) unless !logged_in?
     @user = User.new
   end
 
   def create
-    byebug
     @user = User.create(user_params)
     if @user.valid?
       session[:user_id] = @user.id
