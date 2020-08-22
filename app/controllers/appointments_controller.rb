@@ -11,10 +11,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    if @user
-      @appointment = Appointment.create(type_of_appt: params[:appointment][:type_of_appt], appt_time: params[:appointment][:appt_time], appt_date: params[:appointment][:appt_date], user_id: params[:user_id])
-    end
-    
+      @appointment = Appointment.create(appointments_params)    
     if @appointment.valid?
       redirect_to user_appointment_path(@appointment.user, @appointment)
     else
@@ -37,6 +34,9 @@ class AppointmentsController < ApplicationController
   end
 
   def appointments_params
-    params.require(:appointment).permit(:type_of_appt, :appt_time, :appt_date, :user_id, :laboratory_id)
+    params.require(:appointment).permit(:type_of_appt, :appt_time, :appt_date, :laboratory_id).merge(user_id: current_user.id)
   end
 end
+
+
+# type_of_appt: params[:appointment][:type_of_appt], appt_time: params[:appointment][:appt_time], appt_date: params[:appointment][:appt_date]

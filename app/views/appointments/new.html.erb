@@ -10,5 +10,8 @@
   <%= f.label :appt_date %>
   <%= f.text_field :appt_date %>
   <br>
+  <%= f.label :laboratory_id %>
+  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name %>
+  <br>
   <%= f.submit "Add Appointment" %>
 <% end %>
