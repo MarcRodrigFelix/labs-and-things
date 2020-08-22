@@ -11,6 +11,7 @@
 
   <body>
     <%= yield %>
+    <br>
     <% if logged_in? %>
       <%= button_to "Logout", logout_path %>
     <% end %>

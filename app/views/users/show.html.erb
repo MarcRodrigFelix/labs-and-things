@@ -1,3 +1,18 @@
 <h1>You are now logged in <%= @user.first_name.capitalize if @user.first_name %> <%= @user.last_name %>.</h1>
+<p>Welcome to your profile. Your information is displayed here for you to see.</p>
+<h4>Patient email: <%= @user.email %></h4>
+<h4>Patient last name: <%= @user.last_name %></h4>
+<h4>Patient birtdate: <%= @user.birthdate.strftime("%B %d, %Y") %></h4>
 
-<h3>Any appointments will be listed here</h3>
+----------------------------------------
+
+<h2>This is your appointments section(if you have any).</h2>
+
+<% if !@user.appointments.empty? %>
+  <h3>Appointments pending: <%= @user.appointments.count %></h3>
+  <%= link_to "Go to appointments page", user_appointments_path(@user) %>
+<% else %>
+  <h3>You're all caught up with appointments this month. Great job.<h3>
+<% end %>
+
+<br>
