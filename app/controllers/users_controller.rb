@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
-    @user = User.create(user_params)
+    @user = User.create!(user_params)
     if @user.valid?
       session[:user_id] = @user.id
       redirect_to appointments_path
