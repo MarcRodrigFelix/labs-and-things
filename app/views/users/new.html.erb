@@ -1,0 +1,17 @@
+<h1>Create new user</h1>
+
+<%= form_for @user do |f| %>
+<%= f.label :email %>
+<%= f.email_field :email %>
+<br>
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+<br>
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+<br>
+<%= f.label :date_of_birth %>
+<%= f.datetime_select :date_of_birth %>
+<br>
+<%= f.submit "Create User" %>
+<% end  %>
