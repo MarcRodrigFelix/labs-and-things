@@ -8,10 +8,6 @@ Rails.application.routes.draw do
     resources :appointments
   end
 
-  resources :laboratories do
-    resources :appointments
-  end
-
   resources :users
   resources :laboratories
   resources :appointments

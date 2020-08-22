@@ -1,6 +1,6 @@
 <h1>Schedule a new appointment</h1>
 
-<%= form_for([@user, @appointment]) do |f| %>
+<%= form_for [@user, @appointment]  do |f| %>
   <%= f.label :type_of_appt %>
   <%= f.text_field :type_of_appt %>
   <br>

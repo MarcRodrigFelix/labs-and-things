@@ -1,0 +1,9 @@
+<h1>This is your scheduled appointments!<h1>
+
+<%= @current_user.first_name %>
+<% @current_user.appointments.each do |appt| %>
+  <%= appt.type_of_appt %>
+<% end %>
+
+<br>
+<p><%= link_to "Go to user profile", user_path(@current_user)%></p>
