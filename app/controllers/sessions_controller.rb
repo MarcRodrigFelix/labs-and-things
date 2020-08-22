@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
-  helper_method :current_user
 
   def new
     if logged_in?
