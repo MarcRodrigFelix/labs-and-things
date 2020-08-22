@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:new, :create]
 
   def new
+    redirect_to user_path(@user) unless !logged_in?
     @user = User.new
   end
 
