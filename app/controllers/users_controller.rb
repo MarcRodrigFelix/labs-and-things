@@ -5,14 +5,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
+    byebug
+    @user = User.create(user_params)
     if @user.valid?
       session[:user_id] = @user.id
-      redirect_to appointments_path
+      redirect_to appointment_path(@user)
     else
-      flash[:errors] = ("Sorry, an error occured. Try again.")
       redirect_to new_user_path
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private
