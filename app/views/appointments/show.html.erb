@@ -10,3 +10,4 @@
 
 <br>
 <p><%= link_to "Go to user profile", user_path(@current_user)%></p>
+<p><%= link_to "Go to Laboratory info page", laboratory_path(@current_user.appointments.first.laboratory)%></p>
