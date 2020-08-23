@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   resources :users do 
+    resources :appointments, only: [:index, :new, :create, :show]
+  end
+
+  resources :laboratories do 
     resources :appointments
   end
 

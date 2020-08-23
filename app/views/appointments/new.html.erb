@@ -11,7 +11,7 @@
   <%= f.label :appt_date %>
   <%= f.text_field :appt_date %>
   <br>
-
+  ------------------------------------------
   <p>Pick existing Lab</p>
   <%= f.label :laboratory_id %>
   <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, include_blank: "Choose" %>
@@ -26,7 +26,7 @@
       <%= lab.text_field :lab_type %>
       <br>
       <%= lab.label :phone_number %>
-      <%= lab.telephone_field :phone_number %>
+      <%= lab.text_field :phone_number %>
       <br>
       <%= lab.label :address %>
       <%= lab.text_field :address %>
@@ -38,6 +38,9 @@
       <%= lab.text_field :days_of_operation %>
       <br>
     <% end %>
-
-  <%= f.submit "Add Appointment" %>
+<br>
+  <%= f.submit %>
 <% end %>
+<br>
+<%= link_to "User profile", @user %>
+<br>
