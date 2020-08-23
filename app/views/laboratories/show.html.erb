@@ -15,9 +15,9 @@
   Type: <%= appt.type_of_appt %> |
   Time: <%= appt.appt_time %> |
   Date: <%= appt.appt_date %> |
-  Patient: <%= appt.user.first_name %> |
+  Patient: <%= "#{appt.user.first_name} #{appt.user.last_name}" %> |
   </li>
 <% end %>
-<ul>
+</ul>
 
 <p><%= link_to "Go to user profile", user_path(@current_user)%> | <%= link_to "Add appointment", new_user_appointment_path(@current_user)%></p>

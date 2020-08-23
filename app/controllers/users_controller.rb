@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :create]
+  before_action :find_laboratory
 
   def new
     @user = User.new
@@ -17,12 +18,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_appts = Appointment.where(user_id: params[:id])
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :birthdate, :password, :password_confirmation)
+  end
+
+  def find_laboratory
+    @laboratory = Laboratory.find_by(params[:laboratory_id])
   end
 
 end
