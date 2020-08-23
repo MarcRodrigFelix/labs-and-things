@@ -26,7 +26,7 @@
     <%= f.text_field :address %>
     <br>
     <%= f.label :lab_hours %>
-    <%= f.time_select :hours, { :ampm => true } %>
+    <%= f.text_field :lab_hours, :input_html => {:value => "AM - PM"} %>
     <br>
     <%= f.label :days_of_operation %>
     <%= f.text_field :days_of_operation %>
@@ -34,11 +34,9 @@
   <% end %>
 
   <p>Pick existing Lab</p>
-
-  <br>
   <%= f.label :laboratory_id %>
   <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, :include_blank => true %>
   <br>
-
+  <br>
   <%= f.submit "Add Appointment" %>
 <% end %>
