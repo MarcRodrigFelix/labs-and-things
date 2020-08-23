@@ -7,7 +7,7 @@
 <h4>Days available: <%= @lab.days_of_operation %></h4>
 
 --------------------------------
-<h3>These appointments are pertaining to <%= @lab.name %> only.</h3>
+<h3><%= @lab.name %> scheduled appointments.</h3>
 
 <ul>
 <% @appointments.each do |appt| %>
@@ -20,4 +20,4 @@
 <% end %>
 </ul>
 
-<p><%= link_to "Go to user profile", user_path(@current_user)%> | <%= link_to "Add appointment", new_user_appointment_path(@current_user)%></p>
+<p><%= link_to "Go to user profile", user_path(@user)%> | <%= link_to "Add appointment", new_user_appointment_path(@user) %></p>
