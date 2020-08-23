@@ -10,8 +10,35 @@
   <%= f.label :appt_date %>
   <%= f.text_field :appt_date %>
   <br>
-  <%= f.label :laboratory_id %>
-  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name %>
+  <p>You can add a Laboratory here or pick an existing one down below.</p>
+
+  <%= f.fields_for :laboratory do |f| %>
+    <%= f.label :name%>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :lab_type %>
+    <%= f.text_field :lab_type %>
+    <br>
+    <%= f.label :phone_number %>
+    <%= f.telephone_field :phone_number %>
+    <br>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <br>
+    <%= f.label :lab_hours %>
+    <%= f.time_select :hours, { :ampm => true } %>
+    <br>
+    <%= f.label :days_of_operation %>
+    <%= f.text_field :days_of_operation %>
+    <br>
+  <% end %>
+
+  <p>Pick existing Lab</p>
+
   <br>
+  <%= f.label :laboratory_id %>
+  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, :include_blank => true %>
+  <br>
+
   <%= f.submit "Add Appointment" %>
 <% end %>

@@ -1,5 +1,7 @@
 <h1>You are now logged in <%= @user.first_name.capitalize if @user.first_name %> <%= @user.last_name %>.</h1>
+
 <p>Welcome to your profile. Your information is displayed here for you to see.</p>
+
 <h4>Patient email: <%= @user.email %></h4>
 <h4>Patient last name: <%= @user.last_name %></h4>
 <h4>Patient birtdate: <%= @user.birthdate.strftime("%B %d, %Y") %></h4>
