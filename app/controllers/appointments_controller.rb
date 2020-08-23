@@ -1,14 +1,12 @@
 class AppointmentsController < ApplicationController
-  before_action :find_user, only: [:index, :new, :create]
   before_action :find_laboratory
   
   def index
-    @appointments = @current_user.appointments
+    @appointments = @user.appointments
   end
 
   def new
     @appointment = Appointment.new()
-    @user = current_user
   end
 
   def create
@@ -25,10 +23,6 @@ class AppointmentsController < ApplicationController
   end
 
   private
-
-  def find_user
-    @user = User.find_by(id: params[:user_id])
-  end
 
   def find_laboratory
     @laboratory = Laboratory.find_by(params[:laboratory_id])
