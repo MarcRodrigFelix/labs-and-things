@@ -1,6 +1,7 @@
 <h1>Schedule a new appointment</h1>
 
 <%= form_for [@user, @appointment]  do |f| %>
+  <%= f.hidden_field :user_id %>
   <%= f.label :type_of_appt %>
   <%= f.text_field :type_of_appt %>
   <br>
@@ -10,33 +11,33 @@
   <%= f.label :appt_date %>
   <%= f.text_field :appt_date %>
   <br>
-  <p>You can add a Laboratory here or pick an existing one down below.</p>
-
-  <%= f.fields_for :laboratory do |f| %>
-    <%= f.label :name%>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :lab_type %>
-    <%= f.text_field :lab_type %>
-    <br>
-    <%= f.label :phone_number %>
-    <%= f.telephone_field :phone_number %>
-    <br>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-    <br>
-    <%= f.label :lab_hours %>
-    <%= f.text_field :lab_hours, :input_html => {:value => "AM - PM"} %>
-    <br>
-    <%= f.label :days_of_operation %>
-    <%= f.text_field :days_of_operation %>
-    <br>
-  <% end %>
 
   <p>Pick existing Lab</p>
   <%= f.label :laboratory_id %>
-  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, :include_blank => true %>
-  <br>
-  <br>
+  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, include_blank: "Choose" %>
+
+  <p>Or add a new Laboratory</p>
+
+    <%= f.fields_for :laboratory , @appointment.build_laboratory do |lab| %>
+      <%= lab.label :name%>
+      <%= lab.text_field :name %>
+      <br>
+      <%= lab.label :lab_type %>
+      <%= lab.text_field :lab_type %>
+      <br>
+      <%= lab.label :phone_number %>
+      <%= lab.telephone_field :phone_number %>
+      <br>
+      <%= lab.label :address %>
+      <%= lab.text_field :address %>
+      <br>
+      <%= lab.label :lab_hours %>
+      <%= lab.text_field :lab_hours %>
+      <br>
+      <%= lab.label :days_of_operation %>
+      <%= lab.text_field :days_of_operation %>
+      <br>
+    <% end %>
+
   <%= f.submit "Add Appointment" %>
 <% end %>

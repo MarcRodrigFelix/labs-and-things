@@ -8,10 +8,10 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new()
+    @user = current_user
   end
 
   def create
-  byebug
       @appointment = Appointment.create(appointments_params)    
     if @appointment.valid?
       redirect_to user_appointment_path(@appointment.user, @appointment)
