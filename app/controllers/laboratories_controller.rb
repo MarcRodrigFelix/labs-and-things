@@ -1,8 +1,8 @@
 class LaboratoriesController < ApplicationController
 
   def show
-    @lab = Laboratory.find_by(id: params[:id])
-    @appts = @lab.appointments
+    @lab = Laboratory.find(params[:id])
+    @appointments = @lab.appointments.all
   end
 
 end

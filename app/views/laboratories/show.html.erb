@@ -6,6 +6,18 @@
 <h4>Address: <%= @lab.address %></h4>
 <h4>Days available: <%= @lab.days_of_operation %></h4>
 
-<p><%= link_to "View all appointments related to #{@lab.name}", laboratory_appointments_path(@lab) %></p>
-<p><%= link_to "Go to user profile", user_path(@current_user)%></p>
-<p><%= link_to "Add appointment", new_user_appointment_path(@current_user)%></p>
+--------------------------------
+<h3>These appointments are pertaining to <%= @lab.name %> only.</h3>
+
+<ul>
+<% @appointments.each do |appt| %>
+  <li>
+  Type: <%= appt.type_of_appt %> |
+  Time: <%= appt.appt_time %> |
+  Date: <%= appt.appt_date %> |
+  Patient: <%= appt.user.first_name %> |
+  </li>
+<% end %>
+<ul>
+
+<p><%= link_to "Go to user profile", user_path(@current_user)%> | <%= link_to "Add appointment", new_user_appointment_path(@current_user)%></p>
