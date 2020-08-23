@@ -1,9 +1,12 @@
-<h1>This is your scheduled appointments!!!</h1>
+<h1>These are your scheduled appointments <%= @current_user.first_name %>.</h1>
 
-<%= @current_user.first_name %>
+
+<ol>
 <% @current_user.appointments.each do |appt| %>
-  <%= appt.type_of_appt %>
+  <li>Appointment for: <%= appt.type_of_appt %> | Time: <%= appt.appt_time %> | Date: <%= appt.appt_date %> | Lab: <%= appt.laboratory.name %></li>
 <% end %>
+</ol>
+
 
 <br>
 <p><%= link_to "Go to user profile", user_path(@current_user)%></p>
