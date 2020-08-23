@@ -1,10 +1,10 @@
 <h2>Welcome to <%= @lab.name %> Lab page!</h2>
 
-<h4><%= %></h4>
-<h4><%= %></h4>
-<h4><%= %></h4>
-<h4><%= %></h4>
-<h4><%= %></h4>
+<h4>Lab Name: <%= @lab.name %></h4>
+<h4>Type: <%= @lab.lab_type %></h4>
+<h4>Phone number: <%= @lab.phone_number %></h4>
+<h4>Address: <%= @lab.address %></h4>
+<h4>Days available: <%= @lab.days_of_operation %></h4>
 
 
 <p><%= link_to "Go to user profile", user_path(@current_user)%></p>
