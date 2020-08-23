@@ -1,10 +1,10 @@
 <h2>Hello <%= @current_user.first_name %> this is your scheduled appointment information.</h2>
 
-  <p><%= @appointment.type_of_appt %></p>
-  <p><%= @appointment.appt_time %></p>
-  <p><%= @appointment.user.last_name %></p>
-  <p><%= @appointment.laboratory.name %></p>
+  <p>Appointment type: <%= @appointment.type_of_appt %></p>
+  <p>Appointment time: <%= @appointment.appt_time %></p>
+  <p>Appointment date: <%= @appointment.appt_date %></p>
+  <p>Verify patient last name: <%= @appointment.user.last_name %></p>
+  <p>Verify correct laboratory: <%= @appointment.laboratory.name %></p>
 
 <br>
-<p><%= link_to "Go to user profile", user_path(@current_user)%></p>
-<p><%= link_to "Go to #{@appointment.laboratory.name} page", laboratory_path(@current_user.appointments.first.laboratory) %></p>
+<p><%= link_to "Go to user profile", user_path(@current_user)%> | <%= link_to "Go to #{@appointment.laboratory.name} info page", laboratory_path(@current_user.appointments.first.laboratory) %></p>
