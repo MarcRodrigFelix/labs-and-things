@@ -58,3 +58,5 @@ gem "bcrypt", "~> 3.1"
 gem "activerecord", "~> 6.0"
 
 gem "omniauth-google-oauth2", "~> 0.8.0"
+
+gem 'dotenv-rails', groups: [:development, :test]
