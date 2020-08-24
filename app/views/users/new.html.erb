@@ -2,6 +2,19 @@
 
 <h3>Enter all your info to create a profile.</h3>
 
+<% if @user.errors.any? %>
+  <div id="errors_explained">
+    <h3>Sorry there are currnently <%= pluralize(@user.errors.count, "error") %>!</h3>
+
+    <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= render 'form' %>
 
 <%= link_to "Sign in",  login_path %>

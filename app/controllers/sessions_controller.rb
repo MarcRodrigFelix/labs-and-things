@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      flash[:errors] = ["Oops you have entered an incorrect Email or Password"]
       redirect_to login_path
     end
   end
