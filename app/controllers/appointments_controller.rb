@@ -23,7 +23,7 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    session.delete(params[:id])
+    Appointment.find(params[:id]).destroy
     redirect_to user_appointments_path(@user)
   end
 

@@ -7,4 +7,6 @@
   <p>Verify correct laboratory: <%= @appointment.laboratory.name %></p>
 
 <br>
-<p><%= link_to "Go to user profile", user_path(@user)%> | <%= link_to "Go to #{@appointment.laboratory.name} info page", laboratory_path(@user.appointments.first.laboratory) %></p>
+<p><%= link_to "Go to user profile", user_path(@user)%> | <%= link_to "Get #{@appointment.laboratory.name} info", laboratory_path(@user.appointments.first.laboratory) %></p>
+
+<h5><%= button_to "Remove appointment", appointment_path(@appointment), method: :delete %></h5>
