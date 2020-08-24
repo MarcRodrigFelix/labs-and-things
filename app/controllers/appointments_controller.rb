@@ -22,6 +22,11 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
   end
 
+  def destroy
+    session.delete(params[:id])
+    redirect_to user_appointments_path(@user)
+  end
+
   private
 
   def find_laboratory

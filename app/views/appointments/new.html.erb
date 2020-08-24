@@ -1,46 +1,6 @@
 <h1>Schedule a new appointment</h1>
 
-<%= form_for [@user, @appointment]  do |f| %>
-  <%= f.hidden_field :user_id %>
-  <%= f.label :type_of_appt %>
-  <%= f.text_field :type_of_appt %>
-  <br>
-  <%= f.label :appt_time %>
-  <%= f.text_field :appt_time %>
-  <br>
-  <%= f.label :appt_date %>
-  <%= f.text_field :appt_date %>
-  <br>
-  ------------------------------------------
-  <p>Pick existing Lab</p>
-  <%= f.label :laboratory_id %>
-  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, include_blank: "Choose" %>
+<%= render 'form' %>
 
-  <p>Or add a new Laboratory</p>
-
-    <%= f.fields_for :laboratory , @appointment.build_laboratory do |lab| %>
-      <%= lab.label :name%>
-      <%= lab.text_field :name %>
-      <br>
-      <%= lab.label :lab_type %>
-      <%= lab.text_field :lab_type %>
-      <br>
-      <%= lab.label :phone_number %>
-      <%= lab.text_field :phone_number %>
-      <br>
-      <%= lab.label :address %>
-      <%= lab.text_field :address %>
-      <br>
-      <%= lab.label :lab_hours %>
-      <%= lab.text_field :lab_hours %>
-      <br>
-      <%= lab.label :days_of_operation %>
-      <%= lab.text_field :days_of_operation %>
-      <br>
-    <% end %>
-<br>
-  <%= f.submit %>
-<% end %>
-<br>
 <%= link_to "User profile", @user %>
 <br>
