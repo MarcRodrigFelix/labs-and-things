@@ -1,4 +1,5 @@
 class Appointment < ApplicationRecord
+  validates :type_of_appt, :appt_time, :appt_date, presence: true
   belongs_to :user, optional: true
   belongs_to :laboratory, optional: true
 
