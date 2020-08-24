@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :laboratories, through: :appointments
   accepts_nested_attributes_for :appointments, :allow_destroy => true
 
+  scope :order_by_birthdate, -> {order(:birthdate)}
+
 end
