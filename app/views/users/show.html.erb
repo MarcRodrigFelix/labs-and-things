@@ -2,23 +2,45 @@
 
 <p class="intro">Welcome to your profile. Your information is displayed here for you to see.</p>
 
-<div class="user_data">
+<div class="user-data">
   <h4>Patient email: <%= @user.email %></h4>
   <h4>Patient last name: <%= @user.last_name %></h4>
   <h4>Patient birtdate: <%= @user.birthdate.strftime("%B %d, %Y") %></h4>
+
+  <span><%= link_to "Edit profile", edit_user_path(@user) %></span>
 </div>
+
+<br>
 ----------------------------------------
 
-<h2>This is your appointments section(if you have any).</h2>
+<div class="user-appts">
+  <h2>This is your appointments section(if you have any).</h2>
 
-<% if !@user.appointments.empty? %>
-  <h3>Total appointments pending: <%= @user.appointments.count %></h3>
-  <%= link_to "Go to all appointments page", user_appointments_path(@user) %> | 
-  <%= link_to "Add a new appointment", new_user_appointment_path(@user)%>
-<% else %>
-  <h3>You're all caught up with appointments this month. Great job.<h3>
-  <%= link_to "Add a new appointment", new_user_appointment_path(@user)%> 
-<% end %>
+  <% if !@user.appointments.empty? %>
+    <h3>Total appointments pending: <%= @user.appointments.count %></h3>
+    <%= link_to "Go to all appointments page", user_appointments_path(@user) %> | 
+    <%= link_to "Add a new appointment", new_user_appointment_path(@user)%>
+  <% else %>
+    <h3>You're all caught up with appointments this month. Great job.<h3>
+    <%= link_to "Add a new appointment", new_user_appointment_path(@user)%> 
+  <% end %>
+  <div>
+<br>
 
+----------------------------------------
 
+<br>
+
+<div class="user-labs">
+
+  <h2>These are the Laboratories you will be visiting for you scheduled appointments.</h2>
+  <p>Click on the laboratory name to visit its information page.</p>
+
+  <ul>
+    <% @user.laboratories.each do |lab| %>
+      <li>Laboratory name: <%= link_to lab.name, laboratory_path(lab) %> | Type: <%= lab.lab_type %> | Phone: <%= number_to_phone(lab.phone_number) %></li>
+    <% end %> 
+  </ul>
+
+</div>
 <br>

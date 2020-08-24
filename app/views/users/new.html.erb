@@ -2,12 +2,6 @@
 
 <h3>Enter all your info to create a profile.</h3>
 
-<% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |message| %>
-     <%= message %>
-    <% end %>
-<% end %>
-
 <%= render 'form' %>
 
 <%= link_to "Sign in",  login_path %>
