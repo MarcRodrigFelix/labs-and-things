@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
+  skip_before_action :authorized, only: [:new, :create, :create_with_github]
 
   def new
     if logged_in?
@@ -15,6 +15,18 @@ class SessionsController < ApplicationController
     else
       redirect_to login_path
     end
+  end
+
+  def create_with_github
+  byebug
+    omniauth = request.env['omniauth.auth']['info']
+    user = User.find_or_create_by(email: omniauth["email"]) do |u|
+        u.first_name = omniauth["first_name"]
+        u.last_name = omniauth["last_name"]
+        u.password = SecureRandom.hex
+      end    
+      session[:user_id] = user.id
+      redirect_to user_path(user)
   end
 
   def destroy
