@@ -2,7 +2,7 @@
 
 ## Description.
 
-Labs and Things is for storing laboratory appointments.  As a user you can see all your scheduled appointments and all the labs your will be visiting for those appointments.
+Labs and Things is for storing laboratory appointments.  As a user you can see all your scheduled appointments and all the labs you will be visiting for those appointments.
 
 
 ## What is Labs and Things.
