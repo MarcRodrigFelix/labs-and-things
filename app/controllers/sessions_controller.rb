@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def create_with_github
+  def create_with_google_oauth
+  byebug
     omniauth = request.env['omniauth.auth']['info']
     user = User.find_or_create_by(email: omniauth["email"]) do |u|
         u.first_name = omniauth["first_name"]

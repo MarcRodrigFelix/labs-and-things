@@ -1,16 +1,22 @@
 <h1>Welcome to Labs and Things</h1>
 
-<h3>Login here or with <%= link_to "Github", "/auth/github" %></h3> 
+<div class="forms">
 
-<%= form_tag login_path do %>
-<%= label_tag :email %>
-<%= text_field_tag :email %>
-<br>
-<%= label_tag :password %>
-<%= password_field_tag :password %>
-<br>
-<%= submit_tag "Login" %>
-<% end %>
-<br>
-
+<h3>Login here or with <%= link_to "Github", "/auth/google_oauth2" %></h3> 
+<div class="login">
+  <%= form_tag login_path do %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+  <br>
+  <br>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <br>
+  <br>
+  <%= submit_tag "Login" %>
+  <% end %>
+  <br>
+  </div>
 <%= link_to "Sign up",  new_user_path %>
+
+</div>
