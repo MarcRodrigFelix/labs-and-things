@@ -43,7 +43,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:type_of_appt, :appt_time, :appt_date, :user_id, :laboratory_id)
+    params.require(:appointment).permit(:type_of_appt, :appt_time, :appt_date, :laboratory_id).merge(user_id: current_user.id)
   end
 end
 

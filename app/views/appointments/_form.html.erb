@@ -1,5 +1,16 @@
 <%= form_for [@laboratory, @appointment]  do |f| %>
 
+<% if @appointment.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@appointment.errors.count, "error" ) %> didnt allow your form to save.</h3>
+    <ul>
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <%= f.label :type_of_appt %>
   <%= f.text_field :type_of_appt %>
   <br>
@@ -10,7 +21,6 @@
   <%= f.text_field :appt_date %>
   <br>
   <br>
-
   
   <%= f.submit %>
 <% end %>
