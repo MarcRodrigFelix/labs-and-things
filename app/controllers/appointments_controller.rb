@@ -1,12 +1,12 @@
 class AppointmentsController < ApplicationController
   before_action :find_laboratory
-  skip_before_action :find_laboratory, only: [:index, :show]
+  skip_before_action :find_laboratory, only: [:show]
   
   def index
     if @laboratory
-      @appointments = @laboratory.appointments
+      @appointments = @laboratory.appointments.where(user_id: @user.id)
     else
-      @appointments = Appointment.all
+      @appointments = Appointment.all.where(user_id: @user.id)
     end
   end
 

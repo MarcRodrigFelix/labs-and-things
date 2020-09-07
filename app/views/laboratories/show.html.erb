@@ -5,20 +5,9 @@
 <h4>Phone number: <%= number_to_phone(@laboratory.phone_number) %></h4>
 <h4>Address: <%= @laboratory.address %></h4>
 <h4>Days available: <%= @laboratory.days_of_operation %></h4>
+<p><%= link_to "#{@laboratory.name}", laboratory_appointments_path(@laboratory) %> scheduled appointments.</p>
 
---------------------------------
-<h3><%= @laboratory.name %> scheduled appointments.</h3>
 
-<ul>
-  <% @appointments.each do |appt| %>
-    <li>
-      Type: <%= appt.type_of_appt %> |
-      Time: <%= appt.appt_time %> |
-      Date: <%= appt.appt_date %> |
-      Patient: <%= "#{appt.user.first_name} #{appt.user.last_name}" %> |
-    </li>
-  <% end %>
-</ul>
 
 <p><%= link_to "Profile", user_path(@user)%></p>
 <p><%= link_to "Add appointment", new_laboratory_appointment_path(@laboratory) %></p>

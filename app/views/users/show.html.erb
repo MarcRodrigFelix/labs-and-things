@@ -12,33 +12,35 @@
 
 <br>
 ----------------------------------------
+<% if false %>
+# <div class="user-appts">
+#   <h2>This is your appointments section.</h2>
 
-<div class="user-appts">
-  <h2>This is your appointments section.</h2>
-
-  <% if !@user.appointments.empty? %>
-    <h3>Total appointments pending: <%= @user.appointments.count %></h3>
-    <%= link_to "Appointments page", appointments_path %>
-  <% else %>
-    <h3>You're all caught up with appointments this month. Great job.<h3>
-    <%= link_to "Add a new appointment", new_user_appointment_path(@user)%> 
-  <% end %>
-  <div>
-<br>
-
+#   <% if !@user.appointments.empty? %>
+#     <h3>Total appointments pending: <%= @user.laboratories.uniq.count %></h3>
+#     <%= link_to "Appointments page", appointments_path %>
+#   <% else %>
+#     <h3>You're all caught up with appointments this month. Great job.<h3>
+#     <%= link_to "Add a new appointment", new_user_appointment_path(@user)%> 
+#   <% end %>
+#   <div>
+# <br>
+<% end %>
 ----------------------------------------
 
 <br>
 
 <div class="user-labs">
 
-  <h2>These are the Laboratories you will be visiting for you scheduled appointments.</h2>
-  <p>Click on the laboratory name to visit its information page.</p>
+  <h2>These are the Laboratories you will be visiting for your scheduled appointments.</h2>
+  <p>Click on the laboratory name to visit its information page and view your appointments.</p>
 
   <ul>
-    <% @user.laboratories.each do |lab| %>
-      <li>Laboratory name: <%= link_to lab.name, laboratory_path(lab) %> | Type: <%= lab.lab_type %> | Phone: <%= number_to_phone(lab.phone_number) %></li>
-    <% end %> 
+    <% @user.laboratories.uniq.each do |lab| %>
+      <li>Laboratory name: <%= link_to lab.name, laboratory_appointments_path(lab) %></li>
+      <li>Type: <%= lab.lab_type %></li>
+      <li>Phone: <%= number_to_phone(lab.phone_number) %></li>
+    <% end %>
   </ul>
 
 <%= link_to "Set up appointment with new Laboratory", new_laboratory_path %>
