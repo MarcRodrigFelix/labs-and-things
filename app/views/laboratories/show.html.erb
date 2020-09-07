@@ -1,24 +1,24 @@
-<h2>Welcome to <%= @lab.name %> Lab page!</h2>
+<h2>Welcome to <%= @laboratory.name %> Lab page!</h2>
 
-<h4>Lab Name: <%= @lab.name %></h4>
-<h4>Type: <%= @lab.lab_type %></h4>
-<h4>Phone number: <%= number_to_phone(@lab.phone_number) %></h4>
-<h4>Address: <%= @lab.address %></h4>
-<h4>Days available: <%= @lab.days_of_operation %></h4>
+<h4>Lab Name: <%= @laboratory.name %></h4>
+<h4>Type: <%= @laboratory.lab_type %></h4>
+<h4>Phone number: <%= number_to_phone(@laboratory.phone_number) %></h4>
+<h4>Address: <%= @laboratory.address %></h4>
+<h4>Days available: <%= @laboratory.days_of_operation %></h4>
 
 --------------------------------
-<h3><%= @lab.name %> scheduled appointments.</h3>
+<h3><%= @laboratory.name %> scheduled appointments.</h3>
 
 <ul>
-<% @appointments.each do |appt| %>
-  <li>
-  Type: <%= appt.type_of_appt %> |
-  Time: <%= appt.appt_time %> |
-  Date: <%= appt.appt_date %> |
-  Patient: <%= "#{appt.user.first_name} #{appt.user.last_name}" %> |
-  </li>
-<% end %>
+  <% @appointments.each do |appt| %>
+    <li>
+      Type: <%= appt.type_of_appt %> |
+      Time: <%= appt.appt_time %> |
+      Date: <%= appt.appt_date %> |
+      Patient: <%= "#{appt.user.first_name} #{appt.user.last_name}" %> |
+    </li>
+  <% end %>
 </ul>
 
-<p><%= link_to "Go to user profile", user_path(@user)%></p>
-<p><%= link_to "Create an appointment", new_laboratory_appointment_path(@lab) %></p>
+<p><%= link_to "Profile", user_path(@user)%></p>
+<p><%= link_to "Add appointment", new_laboratory_appointment_path(@laboratory) %></p>

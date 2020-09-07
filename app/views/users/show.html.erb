@@ -18,7 +18,7 @@
 
   <% if !@user.appointments.empty? %>
     <h3>Total appointments pending: <%= @user.appointments.count %></h3>
-    <%= link_to "Go to all appointments page", user_appointments_path(@user) %>
+    <%= link_to "Appointments page", appointments_path %>
   <% else %>
     <h3>You're all caught up with appointments this month. Great job.<h3>
     <%= link_to "Add a new appointment", new_user_appointment_path(@user)%> 

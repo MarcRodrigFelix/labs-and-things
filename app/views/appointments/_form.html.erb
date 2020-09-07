@@ -1,5 +1,5 @@
 <%= form_for [@laboratory, @appointment]  do |f| %>
-  <%= f.hidden_field :user_id %>
+
   <%= f.label :type_of_appt %>
   <%= f.text_field :type_of_appt %>
   <br>
@@ -11,37 +11,43 @@
   <br>
   <br>
 
-  <% if @laboratory.nil? %>
-
-    <p>Pick existing Lab</p>
-    <%= f.label :laboratory_id %>
-    <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, include_blank: "Choose" %>
-
-    <p>Or add a new Laboratory</p>
-
-      <%= f.fields_for :laboratory , @appointment.build_laboratory do |lab| %>
-        <%= lab.label :name%>
-        <%= lab.text_field :name %>
-        <br>
-        <%= lab.label :lab_type %>
-        <%= lab.text_field :lab_type %>
-        <br>
-        <%= lab.label :phone_number %>
-        <%= lab.text_field :phone_number %>
-        <br>
-        <%= lab.label :address %>
-        <%= lab.text_field :address %>
-        <br>
-        <%= lab.label :lab_hours %>
-        <%= lab.text_field :lab_hours %>
-        <br>
-        <%= lab.label :days_of_operation %>
-        <%= lab.text_field :days_of_operation %>
-        <br>
-      <% end %>
-  <br>
-  <% end %>
-
+  
   <%= f.submit %>
 <% end %>
 <br>
+
+
+
+
+
+<% if false %>
+<% if @laboratory.nil? %>
+  <p>Pick existing Lab</p>
+  <%= f.label :laboratory_id %>
+  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, include_blank: "Choose" %>
+
+  <p>Or add a new Laboratory</p>
+
+    <%= f.fields_for :laboratory , @appointment.build_laboratory do |lab| %>
+      <%= lab.label :name%>
+      <%= lab.text_field :name %>
+      <br>
+      <%= lab.label :lab_type %>
+      <%= lab.text_field :lab_type %>
+      <br>
+      <%= lab.label :phone_number %>
+      <%= lab.text_field :phone_number %>
+      <br>
+      <%= lab.label :address %>
+      <%= lab.text_field :address %>
+      <br>
+      <%= lab.label :lab_hours %>
+      <%= lab.text_field :lab_hours %>
+      <br>
+      <%= lab.label :days_of_operation %>
+      <%= lab.text_field :days_of_operation %>
+      <br>
+    <% end %>
+<br>
+<% end %>
+<% end %>

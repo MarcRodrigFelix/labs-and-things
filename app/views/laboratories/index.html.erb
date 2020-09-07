@@ -1,0 +1,12 @@
+<h2>Local Labs</h2>
+<p>** click on a lab to create a new appointment</p>
+
+<% @laboratories.each do |lab| %>
+
+<ul>
+  <li><%= link_to lab.name, new_laboratory_appointment_path(lab.id) %></li>
+</ul>
+
+<% end %>
+
+<p><%= link_to "Profile", user_path(@user)%></p>

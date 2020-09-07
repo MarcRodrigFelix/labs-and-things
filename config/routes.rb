@@ -4,10 +4,6 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
   get '/auth/google_oauth2/callback', to: 'sessions#create_with_google_oauth'
 
-  resources :users do 
-    resources :appointments, only: [:index, :new, :create, :show, :edit, :destroy]
-  end
-
   resources :laboratories do 
     resources :appointments
   end

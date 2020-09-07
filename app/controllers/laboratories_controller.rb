@@ -1,8 +1,12 @@
 class LaboratoriesController < ApplicationController
+  
+  def index
+    @laboratories = Laboratory.all
+  end
 
   def show
-    @lab = Laboratory.find(params[:id])
-    @appointments = @lab.appointments.all
+    @laboratory = Laboratory.find(params[:id])
+    @appointments = @laboratory.appointments
   end
 
   def new

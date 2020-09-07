@@ -3,10 +3,10 @@
 
 <ol>
 <% @user.appointments.each do |appt| %>
-  <li>Appointment for: <%= link_to appt.type_of_appt, user_appointment_path(@user, appt) %> | Time: <%= appt.appt_time %> | Date: <%= appt.appt_date %> | Lab: <%= link_to appt.laboratory.name, laboratory_path(appt.laboratory) %></li>
+  <li>Appointment for: <%= link_to appt.type_of_appt, appointment_path(appt) %> | Time: <%= appt.appt_time %> | Date: <%= appt.appt_date %> | Lab: <%= link_to appt.laboratory.name, laboratory_path(appt.laboratory) %></li>
 <% end %>
 </ol>
 
 
 <br>
-<p><%= link_to "Go to user profile", user_path(@user)%></p>
+<p><%= link_to "Profile", user_path(@user)%></p>

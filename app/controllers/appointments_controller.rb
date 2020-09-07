@@ -1,12 +1,17 @@
 class AppointmentsController < ApplicationController
   before_action :find_laboratory
+  skip_before_action :find_laboratory, only: [:index, :show]
   
   def index
     if @laboratory
       @appointments = @laboratory.appointments
     else
-      @appointments = Appointments.all
+      @appointments = Appointment.all
     end
+  end
+
+  def show
+    @appointment = Appointment.find(params[:id])
   end
 
   def new
@@ -20,29 +25,25 @@ class AppointmentsController < ApplicationController
       @appointment = Appointment.create(appointments_params)
     end
     if @appointment.valid?
-      redirect_to laboratory_appointment_path(@appointment.laboratory, @appointment)
+      redirect_to laboratory_appointment_path(@laboratory, @appointment)
     else
       render :new
     end
   end
-  
-  def show
-    @appointment = Appointment.find(params[:id])
-  end
 
   def destroy
     Appointment.find(params[:id]).destroy
-    redirect_to user_appointments_path(@user)
+    redirect_to appointments_path
   end
 
   private
 
   def find_laboratory
-    @laboratory = Laboratory.find_by(params[:laboratory_id])
+    @laboratory = Laboratory.find(params[:laboratory_id])
   end
 
   def appointments_params
-    params.require(:appointment).permit(:type_of_appt, :appt_time, :appt_date, :laboratory_id, laboratory_attributes:[:name, :lab_type, :phone_number, :address, :lab_hours, :days_of_operation] ).merge(user_id: current_user.id)
+    params.require(:appointment).permit(:type_of_appt, :appt_time, :appt_date, :laboratory_id, :user_id).merge(user_id: current_user.id)
   end
 end
 
