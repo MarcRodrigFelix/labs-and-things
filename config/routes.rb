@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :laboratories do 
-    resources :appointments, only: [:index, :show]
+    resources :appointments
   end
 
   resources :users

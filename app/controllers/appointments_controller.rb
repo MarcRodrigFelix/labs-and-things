@@ -2,7 +2,11 @@ class AppointmentsController < ApplicationController
   before_action :find_laboratory
   
   def index
-    @appointments = @user.appointments
+    if @laboratory
+      @appointments = @laboratory.appointments
+    else
+      @appointments = Appointments.all
+    end
   end
 
   def new
@@ -10,9 +14,13 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-      @appointment = Appointment.create(appointments_params)    
+    if @laboratory
+      @appointment = @laboratory.appointments.create(appointments_params)
+    else
+      @appointment = Appointment.create(appointments_params)
+    end
     if @appointment.valid?
-      redirect_to user_appointment_path(@appointment.user, @appointment)
+      redirect_to laboratory_appointment_path(@appointment.laboratory, @appointment)
     else
       render :new
     end
