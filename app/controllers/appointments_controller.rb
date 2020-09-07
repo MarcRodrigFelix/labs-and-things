@@ -5,6 +5,8 @@ class AppointmentsController < ApplicationController
   def index
     if @laboratory
       @appointments = @laboratory.appointments.where(user_id: @user.id)
+    else
+      @appointments = @user.appointments.all
     end
   end
 
