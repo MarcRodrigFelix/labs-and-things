@@ -1,11 +1,11 @@
 class LaboratoriesController < ApplicationController
+  before_action :set_laboratory, only: [:show]
   
   def index
     @laboratories = Laboratory.all
   end
 
   def show
-    @laboratory = Laboratory.find(params[:id])
     @appointments = @laboratory.appointments
   end
 
@@ -24,8 +24,12 @@ class LaboratoriesController < ApplicationController
 
   private
 
+  def set_laboratory
+    @laboratory = Laboratory.find(params[:id])
+  end
+
   def lab_params
-    params.require(:laboratory).permit(:name, :lab_type, :phone_number, :address, :lab_hours, :days_of_operation)
+    params.require(:laboratory).permit(:name, :lab_type, :phone_number, :address, :lab_hours, :days_of_operation, :appointment_id)
   end
 
 end
