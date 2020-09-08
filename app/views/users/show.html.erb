@@ -16,11 +16,12 @@
 ----------------------------------------
 
 <div class="user-appts">
-  <h2>This is your appointments section.</h2>
+  <h2>Appointments section.</h2>
 
   <% if !@user.appointments.empty? %>
     <h3>Total appointments pending: <%= @user.laboratories.uniq.count %></h3>
-    <%= link_to "Appointments page", appointments_path %>
+    <%= link_to "Appointments page", appointments_path %> | 
+    <%= link_to "Add appointment", new_appointment_path %>
   <% else %>
     <h3>You're all caught up with appointments this month. Great job.<h3>
     <%= link_to "Add a new appointment", new_appointment_path(@user)%> 
@@ -45,10 +46,7 @@
     <% end %>
   </ul>
 
-<%= link_to "Add new laboratory and new appointment", new_laboratory_path %>
-<br>
-<br>
-<%= link_to "Add new appointment to existing laboratory", laboratories_path %>
+<%= link_to "New Laboratory", new_laboratory_path %> | <%= link_to "New appointment w/ Lab", laboratories_path %>
 
 
 </div>
