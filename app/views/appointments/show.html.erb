@@ -1,4 +1,4 @@
-<h2>Hello <%= @user.first_name %> this is your scheduled appointment information.</h2>
+<h2><%= @user.first_name %>, your appointment info.</h2>
 
   <p>Appointment type: <%= @appointment.type_of_appt %></p>
   <p>Appointment time: <%= @appointment.appt_time %></p>
@@ -7,6 +7,8 @@
   <p>Verify correct laboratory: <%= @appointment.laboratory.name %></p>
 
 <br>
-<p><%= link_to "Profile", user_path(@user)%> | <%= link_to "Get #{@appointment.laboratory.name} info", laboratory_path(@appointment.laboratory.id) %></p>
+<%= link_to "Profile", user_path(@user)%> | <%= link_to "Get #{@appointment.laboratory.name} info", laboratory_path(@appointment.laboratory.id) %> | <%= link_to "Edit appointment", edit_appointment_path(@appointment)%>
 
-<h5><%= button_to "Remove appointment", appointment_path(@appointment), method: :delete %></h5>
+<br>
+<br>
+<%= button_to "Remove appointment", appointment_path(@appointment), method: :delete %>

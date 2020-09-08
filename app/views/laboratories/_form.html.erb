@@ -1,4 +1,5 @@
 <%= form_for @laboratory do |f| %>
+
 <% if @laboratory.errors.any? %>
   <div id="errors_explanation">
     <h3><%= pluralize(@laboratory.errors.count, 'error') %> did'nt allow your form to save</h3>
@@ -10,25 +11,7 @@
   </div>
 <% end %>
 
+<%= render partial:"labfields", locals: {f: f} %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :lab_type %>
-  <%= f.text_field :lab_type %>
-  <br>
-  <%= f.label :phone_number %>
-  <%= f.text_field :phone_number %>
-  <br>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <br>
-  <%= f.label :lab_hours %>
-  <%= f.text_field :lab_hours %>
-  <br>
-  <%= f.label :days_of_operation %>
-  <%= f.text_field :days_of_operation %>
-<br>
-<br>
 <%= f.submit %>
 <% end %>
