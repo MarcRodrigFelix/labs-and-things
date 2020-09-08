@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create, :create_with_github]
+  skip_before_action :authorized, only: [:new, :create, :create_with_google_oauth]
 
   def new
     if logged_in?
@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      flash[:errors] = ['Incorrect username or password']
       redirect_to login_path
     end
   end

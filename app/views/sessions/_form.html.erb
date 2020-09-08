@@ -1,0 +1,28 @@
+<%= form_tag login_path do %>
+
+  <% if flash[:errors] %>
+    <div id="error_explanation">
+      <h2>Try again, either incorrect username or password.</h2>
+      <ul>
+        <% flash[:errors].each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="field<%= ' field_with_errors' if flash[:errors] %>">
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+</div>
+  <br>
+  <br>
+<div class="field<%= ' field_with_errors' if flash[:errors] %>"></div>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+</div
+  <br>
+  <br>
+  <%= submit_tag "Login" %>
+<% end %>

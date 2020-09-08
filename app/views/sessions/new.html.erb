@@ -2,21 +2,13 @@
 
 <div class="forms">
 
-<h3>Login here or with <%= link_to "Github", "/auth/google_oauth2" %></h3> 
-<div class="login">
-  <%= form_tag login_path do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
+  <h3>Login here or with <%= link_to "Github", "/auth/google_oauth2" %></h3>
+
+  <div class="login">
+    <%= render 'form' %>
+  </div>
+
   <br>
-  <br>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <br>
-  <br>
-  <%= submit_tag "Login" %>
-  <% end %>
-  <br>
-</div>
-<%= link_to "Sign up",  new_user_path %>
+  <%= link_to "Sign up",  new_user_path %>
 
 </div>
