@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
         u.first_name = omniauth['info']['first_name']
         u.last_name = omniauth['info']['last_name']
         u.password = SecureRandom.hex(10)
+        u.password_confirmation = u.password
       end
       session[:user_id] = @user.id
       redirect_to user_path(@user)

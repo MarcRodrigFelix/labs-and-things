@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-  <%= f.label :type_of_appt %>
+<%= f.label :type_of_appt %>
   <%= f.text_field :type_of_appt %>
   <br>
   <%= f.label :appt_time %>
@@ -21,6 +21,39 @@
   <%= f.text_field :appt_date %>
   <br>
   <br>
+
+<% if @laboratory.nil? %>
+  <p>Pick existing Lab</p>
+  <%= f.label :laboratory_id %>
+  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, include_blank: "Choose Lab" %>
+
+  <p>Or add a new Laboratory</p>
+
+  <%= f.fields_for :laboratory , @appointment.build_laboratory do |lab| %>
+    <%= lab.label :name%>
+    <%= lab.text_field :name %>
+    <br>
+    <%= lab.label :lab_type %>
+    <%= lab.text_field :lab_type %>
+    <br>
+    <%= lab.label :phone_number %>
+    <%= lab.text_field :phone_number %>
+    <br>
+    <%= lab.label :address %>
+    <%= lab.text_field :address %>
+    <br>
+    <%= lab.label :lab_hours %>
+    <%= lab.text_field :lab_hours %>
+    <br>
+    <%= lab.label :days_of_operation %>
+    <%= lab.text_field :days_of_operation %>
+    <br>
+    <% end %>
+<% end %>
+
+<br>
+<br>
+  
   
   <%= f.submit %>
 <% end %>
