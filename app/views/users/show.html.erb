@@ -5,7 +5,9 @@
 <div class="user-data">
   <h4>Patient email: <%= @user.email %></h4>
   <h4>Patient last name: <%= @user.last_name %></h4>
+<% if @user.birthdate %>
   <h4>Patient birtdate: <%= @user.birthdate.strftime("%B %d, %Y") %></h4>
+<% end %>
 
   <span><%= link_to "Edit profile", edit_user_path(@user) %></span>
 </div>
@@ -21,7 +23,7 @@
     <%= link_to "Appointments page", appointments_path %>
   <% else %>
     <h3>You're all caught up with appointments this month. Great job.<h3>
-    <%= link_to "Add a new appointment", new_user_appointment_path(@user)%> 
+    <%= link_to "Add a new appointment", new_appointment_path(@user)%> 
   <% end %>
   <div>
 <br>

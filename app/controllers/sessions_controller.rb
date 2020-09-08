@@ -7,6 +7,18 @@ class SessionsController < ApplicationController
     end
   end
 
+
+  def create_with_google_oauth
+    omniauth = request.env['omniauth.auth']
+    @user = User.find_or_create_by!(email: omniauth['info']['email']) do |u|
+        u.first_name = omniauth['info']['first_name']
+        u.last_name = omniauth['info']['last_name']
+        u.password = SecureRandom.hex(10)
+      end
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+  end
+
   def create
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
@@ -16,18 +28,6 @@ class SessionsController < ApplicationController
       flash[:errors] = ['Incorrect username or password']
       redirect_to login_path
     end
-  end
-
-  def create_with_google_oauth
-  byebug
-    omniauth = request.env['omniauth.auth']['info']
-    user = User.find_or_create_by(email: omniauth["email"]) do |u|
-        u.first_name = omniauth["first_name"]
-        u.last_name = omniauth["last_name"]
-        u.password = SecureRandom.hex
-      end    
-      session[:user_id] = user.id
-      redirect_to user_path(user)
   end
 
   def destroy
