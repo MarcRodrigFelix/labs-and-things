@@ -3,6 +3,8 @@
 <p class="intro">Welcome to your profile. Your information is displayed here for you to see.</p>
 
 <div class="user-data">
+  <h2>Patient section.</h2>
+
   <h4>Patient email: <%= @user.email %></h4>
   <h4>Patient last name: <%= @user.last_name %></h4>
 <% if @user.birthdate %>
@@ -10,10 +12,9 @@
 <% end %>
 
   <span><%= link_to "Edit profile", edit_user_path(@user) %></span>
-</div>
 
 <br>
-----------------------------------------
+
 
 <div class="user-appts">
   <h2>Appointments section.</h2>
@@ -26,16 +27,15 @@
     <h3>You're all caught up with appointments this month. Great job.<h3>
     <%= link_to "Add a new appointment", new_appointment_path(@user)%> 
   <% end %>
-  <div>
 <br>
 
-----------------------------------------
+
 
 <br>
 
 <div class="user-labs">
 
-  <h2>These are the Laboratories you will be visiting for your scheduled appointments.</h2>
+  <h2>Patient laboratories section.</h2>
   <p>Click on the laboratory name to visit its information page and view your appointments.</p>
 
   <ul>
@@ -46,8 +46,9 @@
     <% end %>
   </ul>
 
-<%= link_to "New Laboratory", new_laboratory_path %> | <%= link_to "New appointment w/ Lab", laboratories_path %>
+<%= link_to "New Lab", new_laboratory_path %> | <%= link_to "New appointment w/ Lab", laboratories_path %>
 
-
+</div>
+</div>
 </div>
 <br>

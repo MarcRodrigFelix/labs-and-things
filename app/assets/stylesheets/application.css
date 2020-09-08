@@ -31,7 +31,7 @@ a {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -42,5 +42,34 @@ a:hover {
 .forms{
   width: 50%;
   margin: 0 auto;
+}
+
+.user-data{
+  -webkit-box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  padding: 20px;
+  border-radius: 15px;
+  background: whitesmoke;
+}
+
+.user-appts{
+  -webkit-box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+  background: whitesmoke;
+}
+
+.user-labs{
+  -webkit-box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 30px 10px rgba(0,0,0,0.75);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+  background: whitesmoke;
 }
 
