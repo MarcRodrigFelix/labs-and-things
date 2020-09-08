@@ -1,0 +1,2 @@
+<%= f.label :laboratory_id %>
+  <%= f.collection_select :laboratory_id, Laboratory.all, :id, :name, include_blank: "Choose Lab" %>
