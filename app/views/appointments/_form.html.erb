@@ -1,4 +1,5 @@
 <%= form_for [@laboratory, @appointment]  do |f| %>
+
 <% if @appointment.errors.any? %>
   <div id="error_explanation">
     <h3><%= pluralize(@appointment.errors.count, "error" ) %> did'nt allow your form to save.</h3>
@@ -16,16 +17,17 @@
   <p>Pick existing Lab</p>
   <%= render partial:"laboratories/labselect", locals:{f: f} %>
 
-  <p>Or add a new Laboratory</p>
-
-  <%= f.fields_for :laboratory , @appointment.build_laboratory do |lab| %>
-    <%= render partial:"laboratories/labfields", locals: {lab: lab} %>
+  <% if false %>
+    <p>Or add a new Laboratory</p>
+    <%= f.fields_for :laboratory , @appointment.build_laboratory do |lab| %>
+      <%= render partial:"laboratories/labfields", locals: {lab: lab} %>
+    <% end %>
   <% end %>
+
 <% end %>
 
 <br>
 <br>
-  
   
   <%= f.submit %>
 <% end %>

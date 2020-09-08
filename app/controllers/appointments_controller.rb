@@ -23,7 +23,7 @@ class AppointmentsController < ApplicationController
       @appointment = @laboratory.appointments.create(appointment_params)
     else
       @appointment = Appointment.create(appointment_params)
-      @laboratory = @appointment.laboratory.id
+      @laboratory = @appointment.laboratory
     end
     if @appointment.valid?
       redirect_to laboratory_appointment_path(@laboratory, @appointment)
